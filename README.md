@@ -13,7 +13,8 @@ Tato CRUD aplikace slouží ke správě malé knihovny.
 
 - Uživatelé mohou:
   - prohlížet dostupné knihy, autory a lokace,
-  - vytvářet rezervace knih (pokud nejsou aktuálně vypůjčeny).
+  - vytvářet rezervace knih (pokud nejsou aktuálně vypůjčeny)
+  - aktualizovat své údaje
 
 Projekt navazuje na předchozí MVC verzi, ale je vytvořen zcela od začátku s důrazem na:
 - čistší a efektivnější architekturu,
