@@ -1,0 +1,10 @@
+2025-06-27 15:06:19: Request:: Method:[BookController.showOneBook(..)] By user:[Unregistered user] From IP:[0:0:0:0:0:0:0:1]
+2025-06-27 15:06:20: Response:: Method:[BookController.showOneBook(..)] Successfully
+2025-06-27 15:06:38: Request:: Method:[BookController.showAllActiveBooks()] By user:[Unregistered user] From IP:[0:0:0:0:0:0:0:1]
+2025-06-27 15:06:38: Response:: Method:[BookController.showAllActiveBooks()] Successfully
+2025-06-27 15:06:51: Request:: Method:[LocationController.getAllLocation()] By user:[Unregistered user] From IP:[127.0.0.1]
+2025-06-27 15:06:51: Response:: Method:[LocationController.getAllLocation()] Successfully
+2025-06-27 15:07:35: Request:: Method:[ReservationController.showAllReservation()] By user:[Unregistered user] From IP:[127.0.0.1]
+2025-06-27 15:07:36: Response:: Method:[ReservationController.showAllReservation()] Successfully
+2025-06-27 15:23:03: Request:: Method:[BookController.softDelete(..)] By user:[john_doe] From IP:[0:0:0:0:0:0:0:1]
+2025-06-27 15:23:03: Response-Exception:: Method:[BookController.softDelete(..)] Returned exception:[EntityDeletionNotAllowedException] Message:[Delete book with active reservation is not allowed.]
