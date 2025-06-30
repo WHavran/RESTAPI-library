@@ -1,28 +1,57 @@
-Library - správa knihovny (REST API)
-Popis
-CRUD aplikace zaměřená na správu malé knihovny.
-Administrátoři mohou provádět CRUD operace nad knihami, autory, lokacemi (umístění knih), uživateli a výpůjčkami (rezervacemi).
-Uživatelé mohou prohlížet dostupné knihy, autory, lokaci a provádět rezervace (v případě, že není aktuálně vypůjčena).
-Projekt je založen na předchozí MVC verzi, ale vytvořen od začátku s důrazem na čistší, správnější a efektivnější architekturu, 
-proto se nejedná o kopii 1:1. 
-Stále ve fázi vývoje v aktuální fázi obsahuje všechny potřebné základní CRUD operace, 
-nyní se zmaměřuji na přidávání novějších funkcí a posouvání projektu kupředu. Zabezpečení skrze spring Security 
-a založeno HTTP Basic sec (pro účely snadného testování v Postmanu). Dále projet obsahuje jednoduché loggování prováděných operacecí skrze AOP.
-Projekt obsahuje i menší množství UnitTestů(dodělávám). 
-Projekt skrze obsahuje Swagger dokumentaci Spring WebMvc (po suptění v IDE dostupná na endpointu: "/swagger-ui.html")
+# Library - Správa knihovny (REST API)
 
-Spuštění
-Pro spuštění je potřeba:
-Naklonovat repozitář do svého IDE.
-Spustit SQL skript ve své databázi (doporučuji MySQL) - resources/dbscripts/dbsetupscript.sql
-Spustit projekt v IDE.
-Pro testování endpointů třeba využít např. Postman
+## Popis
 
-Technologie
-Java
-Spring Boot, Spring Security
-JPA/Hibernate, MySQL
-JUnit, Mockito
-Swagger (Spring WebMvc)
-Použití / Cíl
-Jedná se o hobby projekt, kde aplikuji naučené znalosti a neustále se zlepšuji.
+Tato CRUD aplikace slouží ke správě malé knihovny.
+
+- Administrátoři mohou provádět CRUD operace nad:
+  - knihami,
+  - autory,
+  - lokacemi (umístění knih),
+  - uživateli,
+  - výpůjčkami (rezervacemi).
+
+- Uživatelé mohou:
+  - prohlížet dostupné knihy, autory a lokace,
+  - vytvářet rezervace knih (pokud nejsou aktuálně vypůjčeny).
+
+Projekt navazuje na předchozí MVC verzi, ale je vytvořen zcela od začátku s důrazem na:
+- čistší a efektivnější architekturu,
+- lepší návrhové vzory.
+
+Projekt je stále ve vývoji. Aktuálně obsahuje všechny základní CRUD operace a pracuje se na dalších funkcionalitách.
+
+## Zabezpečení
+
+- Zabezpečení je řešeno pomocí Spring Security.
+- Používá se HTTP Basic Authentication (pro snadné testování např. v Postmanu).
+
+## Funkce
+
+- AOP pro jednoduché logování prováděných operací.
+- Swagger dokumentace dostupná na:  
+  `http://localhost:8080/swagger-ui.html`
+- Základní jednotkové testy (další jsou postupně doplňovány).
+
+## Spuštění
+
+1. Naklonuj repozitář do svého IDE.
+2. Spusť SQL skript v databázi (doporučeno MySQL):  
+   `src/main/resources/dbscripts/dbsetupscript.sql`
+3. Spusť aplikaci přes IDE nebo příkazovou řádku.
+4. Pro testování API můžeš použít např. Postman.
+
+## Použité technologie
+
+- Java
+- Spring Boot, Spring Security
+- JPA / Hibernate, MySQL
+- JUnit, Mockito
+- Swagger (Spring WebMvc)
+
+## Účel
+
+Jedná se o hobby projekt, ve kterém:
+- uplatňuji své znalosti,
+- neustále se učím a zlepšuji,
+- experimentuji s architekturou a návrhem REST API.
