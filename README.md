@@ -26,7 +26,7 @@ Projekt je stále ve vývoji. Aktuálně obsahuje všechny základní CRUD opera
 - Zabezpečení je řešeno pomocí Spring Security.
 - Používá se HTTP Basic Authentication (pro snadné testování např. v Postmanu).
 
-## Funkce
+## Další funkce
 
 - AOP pro jednoduché logování prováděných operací.
 - Swagger dokumentace dostupná na:  
