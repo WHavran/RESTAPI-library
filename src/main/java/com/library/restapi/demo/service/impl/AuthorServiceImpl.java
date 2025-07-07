@@ -14,6 +14,7 @@ import com.library.restapi.demo.service.AuthorService;
 import com.library.restapi.demo.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional
     public AuthorUpdateDTO createNewAuthor(AuthorUpdateDTO authorDTO) {
         Author entity = authorMapper.mapUpdateDTOToEntityCreate(authorDTO);
         authorRepository.save(entity);
@@ -79,6 +81,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional
     public AuthorUpdateDTO updateAuthor(AuthorUpdateDTO authorDTO) {
 
         Author authorDb = findEntityWithDetailsById(authorDTO.id());
@@ -93,6 +96,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional
     public AuthorUpdateDTO patchUpdateAuthor(Map<String, Object> patchInput, int authorId) {
 
         if (patchInput.containsKey("id")){
@@ -112,6 +116,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional
     public void softDelete(int theId) {
 
         Author entity = findEntityWithDetailsById(theId);

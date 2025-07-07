@@ -16,6 +16,7 @@ import com.library.restapi.demo.service.SupportService;
 import com.library.restapi.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -85,6 +86,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDetailDTO createNewUser(UserUpdateDTO inputUserDTO) {
 
         User newUser = userMapper.mapDetailDTOToEntityCreate(inputUserDTO);
@@ -100,6 +102,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDetailDTO updateUser(UserUpdateDTO inputUserDTO) {
 
         User dbUser = findEntityWithDetailsById(inputUserDTO.id());
@@ -116,6 +119,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserProfileDTO updateUserProfileByUser(UserProfileEditDTO inputUserDTO, String username) {
 
         User entity = findEntityWithDetailsByUserName(username);
@@ -127,6 +131,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDetailDTO patchUpdateUser(Map<String, Object> patchInput, int inUserId) {
 
         if (patchInput.containsKey("id")){
@@ -145,6 +150,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void hardDelete(int theId) {
         User entity = findEntityWithDetailsById(theId);
         deleteValidateNoActiveReservations(entity.getReservations());

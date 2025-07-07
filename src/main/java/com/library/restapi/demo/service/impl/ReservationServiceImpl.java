@@ -15,6 +15,7 @@ import com.library.restapi.demo.service.ReservationService;
 import com.library.restapi.demo.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -87,6 +88,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public ReservationViewDTO createNew(ReservationViewDTO inputDTO) {
         Book dbBook = supportService.findBookByTitle(inputDTO.bookTitle());
         boolean bookIsReserved = supportService.checkIfBookHasActiveReservation(dbBook.getId());
@@ -101,6 +103,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public ReservationViewDTO createNewByUser(ReservationByUserUpdateDTO inputDTO, String userName) {
         Book dbBook = supportService.findBookByTitle(inputDTO.bookTitle());
         boolean bookIsReserved = supportService.checkIfBookHasActiveReservation(dbBook.getId());
@@ -114,6 +117,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public ReservationViewDTO updateExist(ReservationViewDTO inputDTO) {
         Reservation dbReservation = findEntityById(inputDTO.id());
         Book dbBook = supportService.findBookByTitle(inputDTO.bookTitle());
@@ -125,6 +129,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public ReservationViewDTO patchUpdate(Map<String, Object> patchInput, int reservationId) {
 
         if (patchInput.containsKey("id")){
@@ -141,6 +146,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    @Transactional
     public void hardDelete(int theId) {
         Reservation reservation = findEntityById(theId);
         if (reservation.getReturnedAt() == null){

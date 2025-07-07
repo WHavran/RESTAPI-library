@@ -18,6 +18,7 @@ import com.library.restapi.demo.service.BookService;
 import com.library.restapi.demo.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public BookUpdateDTO createNewBook(BookUpdateDTO bookDTO) {
 
         Author dbAuthor = supportService.findAuthorByFullName(bookDTO.authorFullName());
@@ -92,6 +94,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public BookUpdateDTO updateBook(BookUpdateDTO bookDTO) {
 
         Book entity = findEntityById(bookDTO.id());
@@ -109,6 +112,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public BookUpdateDTO patchUpdateBook(Map<String, Object> patchInput, int theId) {
 
         if (patchInput.containsKey("id")){
@@ -127,6 +131,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public void softDelete(int theId) {
 
         Book entity = findEntityWithDetailsById(theId);

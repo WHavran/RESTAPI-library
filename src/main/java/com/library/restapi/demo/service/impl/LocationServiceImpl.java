@@ -12,6 +12,7 @@ import com.library.restapi.demo.service.LocationService;
 import com.library.restapi.demo.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public LocationDetailDTO createNewLocation(LocationDetailDTO inputDTO) {
         Location newLocation = locationMapper.mapDetailDTOToEntityCreate(inputDTO);
         locationRepository.save(newLocation);
@@ -67,6 +69,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public LocationDetailDTO updateLocation(LocationDetailDTO inputDTO) {
         Location dbLocation = findEntityWithDetailsById(inputDTO.id());
         locationMapper.mapDetailDTOToEntityUpdate(inputDTO, dbLocation);
@@ -76,6 +79,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public LocationDetailDTO patchUpdateLocation(Map<String, Object> patchInput, int inUserId) {
         if (patchInput.containsKey("id")){
             throw new IllegalArgumentException("Id is not allowed in request body ");
@@ -88,6 +92,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public void hardDelete(int theId) {
         Location dbLocation = findEntityWithDetailsById(theId);
         if (!dbLocation.getBook().isEmpty()){
